@@ -1,7 +1,10 @@
 exports.Base = class Base {
+    
     constructor(page) {
         this.page = page;
+        
     }
+    
     async getCurrentDateTimeString() {
         const now = new Date();
         const year = now.getFullYear();

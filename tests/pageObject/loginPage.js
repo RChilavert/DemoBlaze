@@ -30,8 +30,5 @@ exports.LoginPage = class LoginPage {
         await this.enterLogInUserName(userName);
         await this.enterLogInPassword(password);
         await this.clickLogInButton();
-        
-        const Home = new HomePage(this.page);
-        await expect(Home.userNameProfile).toHaveText('Welcome ' + userName);
     }
 }

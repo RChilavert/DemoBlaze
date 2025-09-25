@@ -12,7 +12,7 @@ test.describe('User Sign Up Tests', () => {
     test.afterEach(async ({ page }, testInfo) => {
         const Base_ = new Base(page);
         const dateTimeString = await Base_.getCurrentDateTimeString();
-        await page.screenshot({ path: `tests/screenshots/${testInfo.title}_${dateTimeString}.png` });
+        await page.screenshot({ path: `tests/screenshot/${testInfo.title}_${dateTimeString}.png` });
     });
 
     test('create new user', async ({ page }) => {
@@ -28,6 +28,30 @@ test.describe('User Sign Up Tests', () => {
             await SignUp.signUp('sampleUser', 'Sample123!!');
             await page.once('dialog', async dialog => {
                 expect(dialog.message()).toContain('This user already exist.');
+                await dialog.accept();
+            });
+    });
+    test('validate that a user cannot be created without providing both Username and Password.', async ({ page }) => {
+        const SignUp = new SignUpPage(page);
+            await SignUp.signUp('', '');
+            await page.once('dialog', async dialog => {
+                expect(dialog.message()).toContain('Please fill out Username and Password.');
+                await dialog.accept();
+            });
+    });
+    test('validate that users cannot be created without completing the Username field.', async ({ page }) => {
+        const SignUp = new SignUpPage(page);
+            await SignUp.signUp('', 'Sample123!!');
+            await page.once('dialog', async dialog => {
+                expect(dialog.message()).toContain('Please fill out Username and Password.');
+                await dialog.accept();
+            });
+    });
+    test('validate that users cannot be created without completing the Password field.', async ({ page }) => {
+        const SignUp = new SignUpPage(page);
+            await SignUp.signUp('sampleUser', '');
+            await page.once('dialog', async dialog => {
+                expect(dialog.message()).toContain('Please fill out Username and Password.');
                 await dialog.accept();
             });
     });
