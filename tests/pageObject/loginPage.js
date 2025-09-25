@@ -1,34 +1,26 @@
-import { expect } from '@playwright/test';  
-import { HomePage } from './homePage';
-
 exports.LoginPage = class LoginPage {
     constructor(page) {
         this.page = page
-        this.logInLink = page.getByRole('link', { name: 'Log in' })
-        this.logInUserNameInput = page.locator('#loginusername')
-        this.logInPasswordInput = page.locator('#loginpassword')
+        this.userNameInput = page.locator('#loginusername')
+        this.passwordInput = page.locator('#loginpassword')
         this.logInButton = page.getByRole('button', { name: 'Log in' })
         this.closeButton = page.getByLabel('Log in').getByText('Close')
     }
-    async openLogInModal() {
-        await this.logInLink.click();
+    async enterUserName(userName) {
+        await this.userNameInput.fill(userName);
     }
-    async enterLogInUserName(userName) {
-        await this.logInUserNameInput.fill(userName);
+    async enterPassword(password) {
+        await this.passwordInput.fill(password);
     }
-    async enterLogInPassword(password) {
-        await this.logInPasswordInput.fill(password);
-    }
-    async clickLogInButton() {
+    async clickOnLogInButton() {
         await this.logInButton.click();
     }
     async clickCloseButton() {
         await this.closeButton.click();
     }
     async logIn(userName, password) {
-        await this.openLogInModal();
-        await this.enterLogInUserName(userName);
-        await this.enterLogInPassword(password);
-        await this.clickLogInButton();
+        await this.enterUserName(userName);
+        await this.enterPassword(password);
+        await this.clickOnLogInButton();
     }
 }

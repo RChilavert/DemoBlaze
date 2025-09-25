@@ -1,5 +1,4 @@
 exports.SignUpPage = class SignUpPage {
-
     constructor(page) {
         this.page = page;
         this.userNameInput = page.getByRole('textbox', { name: 'Username:' });

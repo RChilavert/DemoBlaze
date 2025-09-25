@@ -7,7 +7,7 @@ test.describe('User Sign Up Tests', () => {
     test.beforeEach(async ({ page }) => {
         const Home = new HomePage(page);
             await Home.openPage();
-            await Home.goToSignUpPage();
+            await Home.clickOnSignUpButton();
     });
     test.afterEach(async ({ page }, testInfo) => {
         const Base_ = new Base(page);
