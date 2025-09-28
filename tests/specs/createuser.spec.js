@@ -12,7 +12,7 @@ test.describe('User Sign Up Tests', () => {
     test.afterEach(async ({ page }, testInfo) => {
         const Base_ = new Base(page);
         const dateTimeString = await Base_.getCurrentDateTimeString();
-        await page.screenshot({ path: `tests/screenshot/${testInfo.title}_${dateTimeString}.png` });
+        await page.screenshot({ path: `test-results/screenshot/${testInfo.title}_${dateTimeString}.png` });
     });
 
     test('create new user', async ({ page }) => {
