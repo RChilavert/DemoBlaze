@@ -37,7 +37,47 @@
         }
     },
     "laptops": {
+        "product1": {
+            "name": "Sony vaio i5",
+            "price": "",
+            "description": ""
+        },
+        "product2": {
+            "name": "Sony vaio i7\n",
+            "price": "",
+            "description": ""
+        },
+        "product3": {
+            "name": "MacBook air",
+            "price": "",
+            "description": ""
+        },
+        "product4": {
+            "name": "Dell i7 8gb",
+            "price": "",
+            "description": ""
+        },
+        "product5": {
+            "name": "2017 Dell 15.6 Inch",
+            "price": "",
+            "description": ""
+        },
+        "product6": {
+            "name": "MacBook Pro",
+            "price": "",
+            "description": ""
+        }
     },
     "monitors": {
+        "product1": {
+            "name": "Apple monitor 24",
+            "price": "",
+            "description": ""
+        },
+        "product2": {
+            "name": "ASUS Full HD",
+            "price": "",
+            "description": ""
+        }
     }
 }

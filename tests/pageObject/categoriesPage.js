@@ -7,44 +7,67 @@ exports.CategoriesPage = class CategoriesPage{
         this.monitorsCategoryButton = page.getByRole('link', { name: 'Monitors' });
         this.productName = page.locator('.card-title a');
     }
+    /**
+     * Clicks the 'CATEGORIES' menu button.
+     * @returns {Promise<void>}
+     */
     async clickOnCategoriesMenuButton(){
-        await this.categoriesMenuButton.click();
-    }
-    async clickOnPhonesCategoryButton(){
-        await this.phonesCategoryButton.click();
-    }
-    async clickOnLaptopsCategoryButton(){
-        await this.laptopsCategoryButton.click();
-    }
-    async clickOnMonitorsCategoryButton(){
-        await this.monitorsCategoryButton.click();
-    }
-    async getProductNames(){
-        await this.productName.first().waitFor({ state: 'visible', timeout: 5000 });
-        const productNames = await this.productName.allTextContents();
-        console.log('product names: ' + await productNames);
-        return productNames;
+        try {
+            await this.categoriesMenuButton.click();
+        } catch (error) {
+            console.error(`ERROR in clickOnCategoriesMenuButton: ${error.message}`);
+            throw error;
+        }
     }
     /**
-     * Extract a list of product names for a specific category from the JSON object.
-     * @param {object} JSONData - The loaded JSON object (e.g., the content of productCardInfo.json).
-     * @param {string} category - The category key (e.g., 'phones', 'laptops').
-     * @returns {string[]} An array containing only the values of the 'name' attribute."
+     * Clicks the 'Phones' category button.
+     * @returns {Promise<void>}
      */
-    static getProductNamesFromJSON(JSONData, category) {
-        if (!JSONData[category]) {
-            throw new Error(`Category '${category}' not found in test data.`);
+    async clickOnPhonesCategoryButton(){
+        try {
+            await this.phonesCategoryButton.click();
+        } catch (error) {
+            console.error(`ERROR in clickOnPhonesCategoryButton: ${error.message}`);
+            throw error;
         }
-
-        const productsObject = JSONData[category];
-        const productNames = [];
-
-        for (const key in productsObject) {
-            if (Object.hasOwnProperty.call(productsObject, key)) {
-                productNames.push(productsObject[key].name);
-            }
+    }
+    /**
+     * Clicks the 'Laptops' category button.
+     * @returns {Promise<void>}
+     */
+    async clickOnLaptopsCategoryButton(){
+        try {
+            await this.laptopsCategoryButton.click();
+        } catch (error) {
+            console.error(`ERROR in clickOnLaptopsCategoryButton: ${error.message}`);
+            throw error;
         }
-        console.log('Product names from JSON:', productNames);
-        return productNames;
+    }
+    /**
+     * Clicks the 'Monitors' category button.
+     * @returns {Promise<void>}
+     */
+    async clickOnMonitorsCategoryButton(){
+        try {
+            await this.monitorsCategoryButton.click();
+        } catch (error) {
+            console.error(`ERROR in clickOnMonitorsCategoryButton: ${error.message}`);
+            throw error;
+        }
+    }
+    /**
+     * Gets the names of all visible products on the page.
+     * @returns {Promise<string[]>} An array of product names.
+     */
+    async getProductNames(){
+        try {
+            await this.productName.first().waitFor({ state: 'visible', timeout: 5000 });
+            const productNames = await this.productName.allTextContents();
+            console.log('product names: ', productNames);
+            return productNames;
+        } catch (error) {
+            console.error(`ERROR in getProductNames: ${error.message}`);
+            throw error;
+        }
     }
 }

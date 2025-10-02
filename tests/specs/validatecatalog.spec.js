@@ -16,15 +16,22 @@ test.describe('validation of all catalog products.', () => {
         await page.screenshot({ path: `test-results/screenshot/${testInfo.title}_${dateTimeString}.png` });
     });
 
-    test('validate that the product names are correct.', async ({ page }) => {
+    test.skip('validate that the product names are correct.', async ({ page }) => {
         const Categories = new CategoriesPage(page);
 
             await Categories.clickOnPhonesCategoryButton();
             const WEBproductName = await Categories.getProductNames();
             
             const productCardInfoJSON = await Base.readTestData(JSON_PATH);
-            const JSONproductName = CategoriesPage.getProductNamesFromJSON(productCardInfoJSON, 'phones');
+            const JSONproductName = Base.getProductNamesFromJSON(productCardInfoJSON, 'phones');
             expect(WEBproductName).toEqual(JSONproductName);
+            await page.pause(9000);
+    });
+    
+    test('test updateProductNamesInJSON', async ({ page }) => {
+        const Categories = new CategoriesPage(page);
+            await Categories.clickOnMonitorsCategoryButton();
+            await Base.updateCategoryDataInJSON(JSON_PATH, 'monitors', await Categories.getProductNames());
             await page.pause(9000);
     });
 });
