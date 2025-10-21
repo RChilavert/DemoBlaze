@@ -17,7 +17,7 @@ test.describe('User Sign Up Tests', () => {
 
     test('create new user', async ({ page }) => {
         const SignUp = new SignUpPage(page);
-            await SignUp.signUp('sampleUser', 'Sample123!!');
+            await SignUp.signUp('sampleUser'+ Date.now(), 'Sample123!!');
             await page.once('dialog', async dialog => {
                 expect(dialog.message()).toContain('Sign up successful.');
                 await dialog.accept();

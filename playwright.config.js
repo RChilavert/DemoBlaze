@@ -36,6 +36,8 @@ export default defineConfig({
       size: { width: 640, height: 480 } 
     }
   },
+  /* Directory for storing all build artifacts */
+  outputDir: 'test-results/videos/',
 
   /* Configure projects for major browsers */
   projects: [

@@ -16,7 +16,7 @@ test.describe('validation of all catalog products.', () => {
         await page.screenshot({ path: `test-results/screenshot/${testInfo.title}_${dateTimeString}.png` });
     });
 
-    test.skip('validate that the product names are correct.', async ({ page }) => {
+    test('validate that the product names are correct.', async ({ page }) => {
         const Categories = new CategoriesPage(page);
 
             await Categories.clickOnPhonesCategoryButton();
