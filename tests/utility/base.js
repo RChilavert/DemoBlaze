@@ -36,7 +36,7 @@ exports.Base = class Base {
 
         for (const key in productsObject) {
             if (Object.hasOwnProperty.call(productsObject, key)) {
-                productNames.push(productsObject[key].name);
+                productNames.push(productsObject[key].name.trim());
             }
         }
         console.log('Product names from JSON:', productNames);

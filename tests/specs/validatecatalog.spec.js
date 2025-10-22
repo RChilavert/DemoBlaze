@@ -18,32 +18,29 @@ test.describe('validation of all catalog products.', () => {
 
     test('validate that the product names for the Phones category are correct.', async ({ page }) => {
         const Categories = new CategoriesPage(page);
-
             await Categories.clickOnPhonesCategoryButton();
             const WEBproductName = await Categories.getProductNames('Phones');
-            
+
             const productCardInfoJSON = await Base.readTestData(JSON_PATH);
             const JSONproductName = Base.getProductNamesFromJSON(productCardInfoJSON, 'phones');
             expect(WEBproductName).toEqual(JSONproductName);
     });
     test('validate that the product names for the Laptops category are correct.', async ({ page }) => {
         const Categories = new CategoriesPage(page);
-
-            await Categories.clickOnLaptopsCategoryButton()
-            const WEBproductName = await Categories.getProductNames('Laptops');
+            await Categories.clickOnLaptopsCategoryButton();
+            const WEBproductName0 = await Categories.getProductNames('Laptops');
             
             const productCardInfoJSON = await Base.readTestData(JSON_PATH);
             const JSONproductName = Base.getProductNamesFromJSON(productCardInfoJSON, 'laptops');
-            expect(WEBproductName).toEqual(JSONproductName);
+            expect(WEBproductName0).toEqual(JSONproductName);
     });
     test('validate that the product names for the Monitors category are correct.', async ({ page }) => {
         const Categories = new CategoriesPage(page);
+            await Categories.clickOnMonitorsCategoryButton();
+            const WEBproductName1 = await Categories.getProductNames('Monitors');
 
-            await Categories.clickOnMonitorsCategoryButton()
-            const WEBproductName = await Categories.getProductNames('Monitors');
-            
             const productCardInfoJSON = await Base.readTestData(JSON_PATH);
             const JSONproductName = Base.getProductNamesFromJSON(productCardInfoJSON, 'monitors');
-            expect(WEBproductName).toEqual(JSONproductName);
+            expect(WEBproductName1).toEqual(JSONproductName);
     });
 });
