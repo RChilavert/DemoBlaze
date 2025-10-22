@@ -5,7 +5,6 @@ exports.HomePage = class HomePage{
         this.logInLink = page.getByRole('link', { name: 'Log in' });
         this.userNameProfile = page.getByRole('link', { name: 'Welcome' });
     }
-
     /**
      * Navigates to the application's home page.
      * @returns {Promise<void>}
@@ -18,7 +17,6 @@ exports.HomePage = class HomePage{
             throw error;
         }
     }
-
     /**
      * Clicks the 'Sign up' link in the navigation bar.
      * @returns {Promise<void>}
@@ -31,7 +29,6 @@ exports.HomePage = class HomePage{
             throw error;
         }
     }
-
     /**
      * Clicks the 'Log in' link in the navigation bar.
      * @returns {Promise<void>}

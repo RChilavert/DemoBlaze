@@ -6,7 +6,6 @@ exports.LoginPage = class LoginPage {
         this.logInButton = page.getByRole('button', { name: 'Log in' });
         this.closeButton = page.getByLabel('Log in').getByText('Close');
     }
-
     /**
      * Enters the username into the username input field.
      * @param {string} userName - The username to enter.
@@ -20,7 +19,6 @@ exports.LoginPage = class LoginPage {
             throw error;
         }
     }
-
     /**
      * Enters the password into the password input field.
      * @param {string} password - The password to enter.
@@ -34,7 +32,6 @@ exports.LoginPage = class LoginPage {
             throw error;
         }
     }
-
     /**
      * Clicks the 'Log in' button.
      * @returns {Promise<void>}
@@ -47,7 +44,6 @@ exports.LoginPage = class LoginPage {
             throw error;
         }
     }
-
     /**
      * Clicks the 'Close' button on the login modal.
      * @returns {Promise<void>}
@@ -60,7 +56,6 @@ exports.LoginPage = class LoginPage {
             throw error;
         }
     }
-
     /**
      * Performs the complete user login process.
      * @param {string} userName - The username to log in with.

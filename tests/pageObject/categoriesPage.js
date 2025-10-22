@@ -57,13 +57,14 @@ exports.CategoriesPage = class CategoriesPage{
     }
     /**
      * Gets the names of all visible products on the page.
+     * @param {string} category - Name of the category from which the product names are being retrieved.
      * @returns {Promise<string[]>} An array of product names.
      */
-    async getProductNames(){
+    async getProductNames(category){
         try {
             await this.productName.first().waitFor({ state: 'visible', timeout: 5000 });
             const productNames = await this.productName.allTextContents();
-            console.log('product names: ', productNames);
+            console.log('WEB - Product names of the '+category+' category: ', productNames);
             return productNames;
         } catch (error) {
             console.error(`ERROR in getProductNames: ${error.message}`);
